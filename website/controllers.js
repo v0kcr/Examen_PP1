@@ -70,8 +70,14 @@ export function login(req, res) {
 }
 
 export function resetPassword(req, res) {
+  let fondos = [
+    "/assets/img/login-bg.png",
+    "/assets/img/login-bg2.png",
+    "/assets/img/login-bg3.jpg"
+  ];
   return res.render('website/reset-password', {
     title: 'Recuperar Contraseña',
+    background: fondos[Math.floor(Math.random() * 3)]
   });
 }
 
