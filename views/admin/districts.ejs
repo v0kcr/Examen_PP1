@@ -1,0 +1,304 @@
+<!-- views/admin/carrers.ejs -->
+
+<% layout("layouts/admin2") %>
+
+<main class="main-content"> <div class="container-fluid">
+<!-- PAGE HEADER -->
+<h3 class="mb-4">
+  <a href="/admin/academic">
+    <i class="fa fa-book me-2"></i>
+    Gestión Académica
+  </a>
+  / Distritos
+</h3>
+
+
+<div class="row">
+
+  <!-- ========================= -->
+  <!-- FORMULARIO -->
+  <!-- ========================= -->
+  <div class="col-lg-4 col-md-5 mb-4">
+
+    <div class="card">
+
+      <div class="card-header">
+        <h6 class="mb-0" id="cardTitle">
+          <i class="fa fa-plus me-2"></i>
+          Nuevo Distrito
+        </h6>
+      </div>
+
+      <div class="card-body">
+
+        <form method="POST" action="/districts">
+
+          <div class="mb-3">
+
+            <label for="name" class="form-label">
+              Nombre
+            </label>
+
+            <input type="hidden" name="" id="districtsId">
+
+            <input
+              type="text"
+              id="name"
+              name="name"
+              class="form-control"
+              placeholder="Ingrese el nombre del distrito..."
+              required
+            >
+          </div>
+
+          <div class="mb-3">
+
+            <label for="name" class="form-label">
+              Provincia
+            </label>
+
+            <input
+              type="text"
+              id="provincia"
+              name="name"
+              class="form-control"
+              placeholder="Ingrese el nombre de l distrito..."
+              required
+            >
+
+          </div>
+
+          <div class="mb-3">
+
+            <label for="name" class="form-label">
+              Zona
+            </label>
+
+            <input
+              type="text"
+              id="name"
+              name="name"
+              class="form-control"
+              placeholder="Ingrese el nombre de l distrito..."
+              required
+            >
+
+          </div>
+
+
+          <div class="d-flex justify-content-end gap-2">
+
+            <button
+              class="btn btn-outline-secondary"
+              onclick="limpiar(event)"
+            >
+              <i class="fa fa-refresh me-1"></i>
+              Limpiar
+          </button>
+
+            <button
+              type="submit"
+              class="btn btn-success"
+              id="btnGuardar"
+              onclick="agregar(event)"
+            >
+              <i class="fa fa-save me-1"></i>
+              Guardar
+            </button>
+
+          </div>
+
+        </form>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- ========================= -->
+  <!-- LISTADO -->
+  <!-- ========================= -->
+  <div class="col-lg-8 col-md-7 mb-4">
+
+    <div class="card">
+
+      <div class="card-header">
+        <h6 class="mb-0">
+          <i class="fa fa-list me-2"></i>
+          Lista de Distritos
+        </h6>
+      </div>
+
+
+      <div class="card-body">
+
+        <!-- HEADER ACTIONS -->
+        <div class="d-flex justify-content-between align-items-center mb-3">
+
+          <div class="text-muted">
+            <i class="fa fa-graduation-cap me-1"></i>
+            Distritos registrados
+          </div>
+
+          <div>
+            <a
+              href="/districts/new"
+              class="btn btn-success"
+            >
+              <i class="fa fa-plus"></i>
+              Agregar Registro
+            </a>
+          </div>
+
+        </div>
+
+
+        <!-- TABLE -->
+        <div class="table-responsive">
+
+          <table class="table table-striped table-hover" id="districts">
+
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th class="text-end">Acciones</th>
+              </tr>
+            </thead>
+
+
+            <tbody>
+
+              <% if (districts && districts.length > 0) { %>
+
+                <% for (const district of districts) { %>
+
+                  <tr>
+
+                    <td>
+                      <%= district.id %>
+                    </td>
+
+                    <td>
+                      <%= district.name %>
+                    </td>
+
+                    <td class="text-end">
+
+                      <button
+                        class="btn btn-sm btn-outline-secondary me-1"
+                        onclick="editar(<%= district.id %>, event)"
+                      >
+                        <i class="fa fa-edit" ></i>
+                        Editar
+                    </button>
+
+                      <button
+                        class="btn btn-sm btn-outline-danger"
+                        onclick="eliminar(<%= district.id %>, event)"
+                      >
+                        <i class="fa fa-trash"></i>
+                        Eliminar
+                    </button>
+
+                    </td>
+
+                  </tr>
+
+                <% } %>
+
+              <% } else { %>
+
+                <tr>
+                  <td colspan="3" class="text-center text-muted py-4">
+                    No se encontraron distritos.
+                  </td>
+                </tr>
+
+              <% } %>
+
+            </tbody>
+
+          </table>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+</div> </main>
+
+<script>
+    let carrerRows = document.getElementById("carrers").children[1].children.length;
+
+    function limpiar(event){
+      event.preventDefault();
+      document.getElementById("carrerId").value="";
+      document.getElementById("name").value="";
+      document.getElementById("cardTitle").innerHTML = "Nueva Carrera";
+    }
+
+    function agregar(event){
+        event.preventDefault();
+
+        let name = document.getElementById("name").value;
+        let carrersTable = document.getElementById("carrers");
+        let carrerId = document.getElementById("carrerId").value;
+
+        if(carrerId==""){
+          let tr = document.createElement("TR");
+          let td1 = document.createElement("TD");
+          let td2 = document.createElement("TD");
+          let td3 = document.createElement("TD");
+
+          carrerRows = carrerRows + 1;
+          td1.innerHTML = carrerRows;
+          td2.innerHTML = name;
+
+          tr.appendChild(td1);
+          tr.appendChild(td2);
+          tr.appendChild(td3);
+
+          console.log(tr);
+
+          carrersTable.children[1].appendChild(tr);
+        }else{
+          let tbody = carrersTable.children[1];
+
+          for (let tr of tbody.children) {
+            console.log("1 ++++++++++++++++++++")
+            console.log(typeof tr.children[0].innerHTML.trim())
+            console.log(typeof carrerId)
+            if(tr.children[0].innerHTML.trim() == carrerId){
+              tr.children[1].innerHTML = name;
+              document.getElementById("carrerId").value="";
+              document.getElementById("name").value="";
+              document.getElementById("cardTitle").innerHTML = "Nueva Carrera";
+            }
+          }
+        }
+    }
+
+    function eliminar(id, event){
+        let tr = event.currentTarget.parentElement.parentElement;
+        tr.remove();
+    }
+
+    function editar(id, event){
+        let tr = event.currentTarget.parentElement.parentElement;
+        let idRow = tr.children[0].innerHTML;
+        let name = tr.children[1].innerHTML;
+
+        document.getElementById("cardTitle").innerHTML = "Editar Carrera";
+
+        document.getElementById("name").value = name.trim();
+        document.getElementById("carrerId").value = id;
+    }
+</script>

@@ -1,0 +1,123 @@
+@startuml
+
+!define table(x) entity x << (T,#FFAAAA) >>
+!define primary_key(x) <b><color:red>x</color></b>
+!define foreign_key(x) <color:blue>x</color>
+
+skinparam linetype ortho
+skinparam packageStyle rectangle
+skinparam shadowing false
+skinparam ranksep 80
+skinparam nodesep 60
+skinparam entityFontSize 10
+skinparam entityFontStyle bold
+skinparam entityBackgroundColor #FEFECE
+skinparam entityBorderColor #A80036
+
+
+class play_styles {
+  id : INT
+  name : NVARCHAR(30)
+}
+
+class sexs {
+  id : INT
+  name : NVARCHAR(7)
+}
+
+class nations {
+  id : INT
+  name : NVARCHAR(40)
+}
+
+class positions {
+  id : INT
+  name : NVARCHAR(10)
+}
+
+class foots {
+  id : INT
+  name : NVARCHAR(6)
+}
+
+class leagues {
+  id : INT
+  name : NVARCHAR(30)
+  nation_id : INT
+}
+
+class teams {
+  id : INT
+  name : NVARCHAR(40)
+  league_id : INT
+}
+
+class players {
+  id : INT
+  name : NVARCHAR(60)
+  ranking : INT
+  weak_foot : INT
+  skill_moves : INT
+  heigth : INT
+  weight : INT
+  age : INT
+  url : NVARCHAR(120)
+  foot_id : INT
+  sex_id : INT
+  position_id : INT
+  nation_id : INT
+  team_id : INT
+}
+
+class common_details {
+  id : INT
+  overall : INT
+  velocity : INT
+  shooting : INT
+  passing : INT
+  dribbling : INT
+  defending : INT
+  physicality : INT
+  player_id : INT
+}
+
+class goalkeeper_details {
+  id : INT
+  diving : INT
+  handling : INT
+  kicking : INT
+  positioning : INT
+  reflexes : INT
+  player_id : INT
+}
+
+class players_play_styles {
+  id : INT
+  play_style_id : INT
+  player_id : INT
+}
+
+class players_positions {
+  id : INT
+  position_id : INT
+  player_id : INT
+}
+
+nations ||--o{ leagues : nation_id
+leagues ||--o{ teams : league_id
+
+foots ||--o{ players : foot_id
+sexs ||--o{ players : sex_id
+positions ||--o{ players : position_id
+nations ||--o{ players : nation_id
+teams ||--o{ players : team_id
+
+players ||--|| common_details : player_id
+players ||--|| goalkeeper_details : player_id
+
+play_styles ||--o{ players_play_styles : play_style_id
+players ||--o{ players_play_styles : player_id
+
+positions ||--o{ players_positions : position_id
+players ||--o{ players_positions : player_id
+@enduml

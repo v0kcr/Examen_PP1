@@ -1,0 +1,134 @@
+<!-- views/partials/_navbar.ejs -->
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm sticky-top">
+
+  <div class="container">
+
+    <!-- Brand -->
+    <a
+      class="navbar-brand fw-bold d-flex align-items-center"
+      href="/">
+
+      <span
+        class="bg-success rounded-3 d-flex align-items-center justify-content-center me-2"
+        style="width: 38px; height: 38px;">
+
+        <i class="fa-solid fa-graduation-cap text-white"></i>
+
+      </span>
+
+      <span>
+        Práctica <span class="text-success">Lima</span>
+      </span>
+
+    </a>
+
+
+    <!-- Mobile button -->
+    <button
+      class="navbar-toggler border-0"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarContent"
+      aria-controls="navbarContent"
+      aria-expanded="false"
+      aria-label="Abrir menú">
+
+      <span class="navbar-toggler-icon"></span>
+
+    </button>
+
+
+    <!-- Navbar content -->
+    <div
+      class="collapse navbar-collapse"
+      id="navbarContent">
+
+      <!-- Main navigation -->
+      <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+
+        <!-- Inicio -->
+        <li class="nav-item">
+          <a
+            class="nav-link px-3"
+            href="/">
+
+            <i class="fa-solid fa-house me-1"></i>
+            Inicio
+
+          </a>
+        </li>
+
+
+        <!-- Ofertas laborales -->
+        <li class="nav-item">
+          <a
+            class="nav-link px-3"
+            href="/convocatorias">
+
+            <i class="fa-solid fa-briefcase me-1"></i>
+            Ofertas laborales
+
+          </a>
+        </li>
+
+
+        <!-- Empresas -->
+        <li class="nav-item">
+          <a
+            class="nav-link px-3"
+            href="/empresas">
+
+            <i class="fa-solid fa-building me-1"></i>
+            Empresas
+
+          </a>
+        </li>
+
+
+        <!-- Cómo funciona -->
+        <li class="nav-item">
+          <a
+            class="nav-link px-3"
+            href="/como-funciona">
+
+            <i class="fa-solid fa-circle-question me-1"></i>
+            Cómo funciona
+
+          </a>
+        </li>
+
+      </ul>
+
+
+      <!-- Authentication -->
+      <div class="d-flex flex-column flex-lg-row gap-2">
+
+        <!-- Iniciar sesión -->
+        <a
+          href="/login"
+          class="btn btn-outline-light px-3">
+
+          <i class="fa-solid fa-right-to-bracket me-1"></i>
+          Iniciar sesión
+
+        </a>
+
+
+        <!-- Registrarse -->
+        <a
+          href="/register"
+          class="btn btn-success px-3">
+
+          <i class="fa-solid fa-user-plus me-1"></i>
+          Crear cuenta
+
+        </a>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</nav>

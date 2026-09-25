@@ -1,0 +1,156 @@
+<!-- views\website\login.ejs -->
+<% layout("layouts/access") %>
+
+<div class="login-form bg-white bg-opacity-90 p-5 mt-5">
+
+  <!-- Logo
+    asdfa
+    sdfasd
+    fasd -->
+  <div class="text-center mb-4">
+    <img
+      src="/assets/img/ulimaLogo.png"
+      width="203"
+      height="50"
+      alt="Universidad de Lima"
+    >
+  </div>
+
+  <div class="alert d-none" role="alert" id="alertMessage">
+    A simple danger alert—check it out!
+  </div>
+
+  <!-- Usuario -->
+  <div class="mb-3">
+    <label for="txtUser" class="form-label">
+      Usuario
+    </label>
+
+    <input
+      class="form-control"
+      type="text"
+      name="username"
+      id="txtUser"
+      placeholder="Ingrese su usuario"
+    >
+  </div>
+
+  <!-- Contraseña -->
+  <div class="mb-3">
+    <label for="txtPassword" class="form-label">
+      Contraseña
+    </label>
+
+    <input
+      class="form-control"
+      type="password"
+      name="password"
+      id="txtPassword"
+      placeholder="Ingrese su contraseña"
+    >
+  </div>
+
+  <!-- Botón -->
+  <div class="d-grid mb-3">
+    <button type="button" class="btn btn-dark" onclick="ingresar()" id="btnIngresar">
+      Iniciar Sesión
+    </button>
+  </div>
+
+  <!-- Recuperar contraseña -->
+  <div class="text-center mb-4">
+    <a href="/reset-password">
+      ¿Has olvidado tu contraseña?
+    </a>
+  </div>
+
+  <!-- Comunicado -->
+  <div class="bg-secondary text-white p-3 mb-4">
+
+    <h5 class="mb-3">
+      COMUNICADO
+    </h5>
+
+    <p class="mb-0 small">
+      Estimados usuarios de la comunidad ULima:
+      <br><br>
+
+      Para resolver sus consultas sobre las plataformas
+      Blackboard y Zoom, ponemos a su disposición los siguientes
+      canales de atención:
+      <br><br>
+
+      Correo electrónico: soporteaulas@ulima.edu.pe
+      <br>
+      Teléfono: 01 437 8800
+      <br>
+      Anexo (en campus): 500
+      <br>
+      Presencial: Sótano Edificio L2.
+      <br>
+      Horario: Lunes a viernes 7-22hrs, Sábados 7-13hrs
+    </p>
+
+  </div>
+
+  <!-- Copyright -->
+  <div class="text-center">
+    <small class="text-muted">
+      © 1997-2026 Blackboard Inc. Todos los derechos reservados.
+    </small>
+  </div>
+
+</div>
+
+
+<script>
+  function ingresar(){
+    let username = document.getElementById("txtUser").value;
+    let password = document.getElementById("txtPassword").value;
+    let alertMessage = document.getElementById("alertMessage");
+    
+    if(username == "" || password == ""){
+      alertMessage.classList.remove("d-none");
+      alertMessage.classList.add("alert-danger");
+      alertMessage.classList.remove("alert-success");
+      alertMessage.innerHTML = "Oe llena los campos";
+    }else{
+      if(username == "admin" && password == "123"){
+        alertMessage.classList.remove("d-none");
+        alertMessage.innerHTML = "Bienvenido";
+        alertMessage.classList.remove("alert-danger");
+        alertMessage.classList.add("alert-success");
+
+        document.getElementById("txtUser").disabled = true;
+        document.getElementById("txtPassword").disabled = true;
+        document.getElementById("btnIngresar").disabled = true;
+
+        setInterval(() => {
+          window.location.href = "/dashboard.html";
+        }, 5000);
+      }else{
+        alertMessage.classList.remove("d-none");
+        alertMessage.classList.add("alert-danger");
+        alertMessage.classList.remove("alert-success");
+        alertMessage.innerHTML = "Credenciales inválidas";
+      }
+    }
+
+    setInterval(() => {
+      alertMessage.classList.add("d-none");
+    }, 5000);
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    let fondos = [
+      "/assets/img/login-bg.png",
+      "/assets/img/login-bg2.png",
+      "/assets/img/login-bg3.jpg"
+    ];
+
+    setInterval(() => {
+      let indice = Math.floor(Math.random() * 3);
+      document.body.style.backgroundImage = `url('${fondos[indice]}')`;
+    }, 5000);
+  });
+</script>

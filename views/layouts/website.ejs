@@ -1,0 +1,74 @@
+<!-- views/layouts/website.ejs -->
+
+<!doctype html>
+
+<html lang="es">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <link
+    rel="icon"
+    type="image/x-icon"
+    href="/favicon.ico"
+  >
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+
+  <!-- CSS propio -->
+   <link
+    rel="stylesheet"
+    href="/dist/css/index.css"
+  >
+  <link
+    rel="stylesheet"
+    href="/dist/css/web.css"
+  >
+
+  <title><%= title %></title>
+
+</head>
+
+
+<body class="d-flex flex-column min-vh-100 m-0 p-0">
+
+
+  <!-- =====================================================
+       NAVBAR
+  ====================================================== -->
+
+  <%- include("partials/_navbar") %>
+
+
+  <!-- =====================================================
+       CONTENIDO
+  ====================================================== -->
+
+  <main class="flex-grow-1 w-100 m-0 p-0">
+
+    <%- body %>
+
+  </main>
+
+
+  <!-- =====================================================
+       FOOTER
+  ====================================================== -->
+
+  <%- include("partials/_footer") %>
+
+
+  <!-- JavaScript propio -->
+  <script
+    type="module"
+    src="/dist/js/web.js">
+  </script>
+
+</body>
+
+</html>

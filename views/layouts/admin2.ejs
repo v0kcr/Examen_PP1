@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- CSS del Admin o de React -->
+   <link rel="stylesheet" href="/dist/css/index.css">
+  <link rel="stylesheet" href="/dist/css/admin.css">
+
+  <title><%= title %></title>
+</head>
+<body>
+<!-- views/admin/partials/_navbar.ejs -->
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+
+  <div class="container-fluid px-4">
+
+    <!-- ========================= -->
+    <!-- BRAND -->
+    <!-- ========================= -->
+
+    <a
+      class="navbar-brand fw-bold d-flex align-items-center me-4"
+      href="/admin">
+
+      <span
+        class="bg-success rounded-2 d-flex align-items-center justify-content-center me-2"
+        style="width: 34px; height: 34px;">
+
+        <i class="fa-solid fa-shield-halved"></i>
+
+      </span>
+
+      <span>
+        Práctica<span class="text-success">Lima</span>
+      </span>
+
+      <span class="badge bg-secondary ms-2 fw-normal">
+        Admin
+      </span>
+
+    </a>
+
+
+    <!-- ========================= -->
+    <!-- MOBILE BUTTON -->
+    <!-- ========================= -->
+
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#adminNavbar"
+      aria-controls="adminNavbar"
+      aria-expanded="false"
+      aria-label="Abrir menú">
+
+      <span class="navbar-toggler-icon"></span>
+
+    </button>
+
+
+    <!-- ========================= -->
+    <!-- NAVBAR CONTENT -->
+    <!-- ========================= -->
+
+    <div
+      class="collapse navbar-collapse"
+      id="adminNavbar">
+
+
+      <!-- ========================= -->
+      <!-- MAIN MENU -->
+      <!-- ========================= -->
+
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+
+        <!-- Dashboard -->
+
+        <li class="nav-item">
+
+          <a
+            class="nav-link"
+            href="/admin">
+
+            <i class="fa-solid fa-gauge-high me-1"></i>
+
+            Dashboard
+
+          </a>
+
+        </li>
+
+
+        <!-- Semestres -->
+
+        <li class="nav-item">
+
+          <a
+            class="nav-link"
+            href="/admin/semesters">
+
+            <i class="fa-solid fa-calendar-days me-1"></i>
+
+            Semestres
+
+          </a>
+
+        </li>
+
+
+        <!-- Distritos -->
+
+        <li class="nav-item">
+
+          <a
+            class="nav-link"
+            href="/admin/districts">
+
+            <i class="fa-solid fa-location-dot me-1"></i>
+
+            Distritos
+
+          </a>
+
+        </li>
+
+
+        <!-- Carreras -->
+
+        <li class="nav-item">
+
+          <a
+            class="nav-link"
+            href="/admin/carrers">
+
+            <i class="fa-solid fa-graduation-cap me-1"></i>
+
+            Carreras
+
+          </a>
+
+        </li>
+
+
+        <!-- Modalidades -->
+
+        <li class="nav-item">
+
+          <a
+            class="nav-link"
+            href="/admin/modalities">
+
+            <i class="fa-solid fa-laptop-house me-1"></i>
+
+            Modalidades
+
+          </a>
+
+        </li>
+
+
+        <!-- Habilidades -->
+
+        <li class="nav-item">
+
+          <a
+            class="nav-link"
+            href="/admin/skills">
+
+            <i class="fa-solid fa-star me-1"></i>
+
+            Habilidades
+
+          </a>
+
+        </li>
+
+      </ul>
+
+
+      <!-- ========================= -->
+      <!-- RIGHT MENU -->
+      <!-- ========================= -->
+
+      <div class="d-flex align-items-center gap-3">
+
+
+        <!-- Sitio público -->
+
+        <a
+          href="/"
+          class="btn btn-outline-light btn-sm">
+
+          <i class="fa-solid fa-globe me-1"></i>
+
+          Sitio público
+
+        </a>
+
+
+        <!-- User -->
+
+        <div class="d-flex align-items-center text-white">
+
+
+          <div
+            class="bg-success rounded-circle d-flex align-items-center justify-content-center me-2"
+            style="width: 34px; height: 34px;">
+
+            <i class="fa-solid fa-user"></i>
+
+          </div>
+
+
+          <div class="d-none d-xl-block">
+
+            <div class="small fw-semibold">
+              Administrador
+            </div>
+
+            <div
+              class="text-white-50"
+              style="font-size: 11px;">
+
+              Administrador
+
+            </div>
+
+          </div>
+
+
+        </div>
+
+
+        <!-- Logout -->
+
+        <a
+          href="/logout"
+          class="btn btn-outline-danger btn-sm"
+          title="Cerrar sesión">
+
+          <i class="fa-solid fa-right-from-bracket"></i>
+
+        </a>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</nav>
+
+  <!-- Renderizado del cuerpo de EJS -->
+  <%- body %>
+
+  <!-- JavaScript principal que arranca React -->
+  <script type="module" src="/dist/js/admin.js"></script>
+</body>
+</html>
