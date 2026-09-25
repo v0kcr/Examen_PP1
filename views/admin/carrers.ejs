@@ -295,6 +295,8 @@
           for (let tr of tbody.children) {
             if(tr.children[0].innerHTML.trim() == carrerId){
               tr.children[1].innerHTML = name;
+              tr.children[2].innerHTML = creditos;
+              tr.children[3].innerHTML = semestre;
             }
           }
           limpiar(event);
